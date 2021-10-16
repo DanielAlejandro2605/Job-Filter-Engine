@@ -1,14 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+:root{
+    --green-primary: hsl(181, 29%, 51%);
+    --light-grayish-bg: hsl(185, 58%, 96%);
+    --dark-grayish-cyan: hsl(180, 8%, 52%);
+    --very-dark-grayish: hsl(180, 14%, 20%);
+    --white: hsl(0, 0%, 100%);
+    --box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
+}
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body{
     font-family: 'Spartan', sans-serif;
 }
 header{
     height: 8rem;
-    background-color: hsl(180, 29%, 50%);
+    background-color: var(--green-primary);
 }
 .title-container{
     width: 100%;
@@ -18,26 +27,48 @@ header{
 .title{
     padding-top: 3rem;
 }
-.search-engine{
+#filter-engine{
     width: 80%;
-    height: 5rem;
     margin-left: 10%;
     margin-top: -3%;
-    background-color: white;
+    background-color: var(--white);
+}
+.filter-btns-container{
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 1.5rem; */
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.subtitle{
+    width: 20%;
+    text-align: center;
+}
+.filter-btn{
+    display: flex;
+    align-items: center;
+    width: 10%;
+    height: 1.5rem;
+    border-radius: 8px;
+    font-family: inherit;
+    background-color: var(--light-grayish-bg);
+    color: var(--green-primary);
+    padding-left: 0.5rem;
+    text-align: right;
+    border: none;
+}
+.icon-remove{
+    margin-left: 1rem;
+    height: 95%;
+    border-radius: 0% 10% 10% 0%;
+    padding: 0.4rem;
+    border: none;
+    background-color: var(--dark-grayish-cyan);
 }
 .main-container{
     width: 80%;
     margin-left: 10%;
     margin-top: 2rem;
     background-color: blueviolet;
-}
-.filter-btn{
-    width: 6rem;
-    height: 2rem;
-    border-radius: 4px;
-    align-items: center;
-    background-color: brown;
-}
-.icon-remove{
-    background-color: black;
 }

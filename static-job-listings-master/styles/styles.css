@@ -19,56 +19,131 @@ header{
     height: 8rem;
     background-color: var(--green-primary);
 }
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 3rem;
+}
+h3{
+    font-size: 2rem;
+}
+h4{
+    font-size: 1.5rem;
+}
+h5{
+    font-size: 1rem;
+}
+h6{
+    font-size: 0.5rem;
+}
 .title-container{
     width: 100%;
     height: 100%;
     text-align: center;
 }
 .title{
-    padding-top: 3rem;
+    padding-top: 2rem;
+}
+.title-filter-engine{
+    width: 20%;
+    margin-left: 40%;
+    text-align: center;
+    padding-top: 2rem;
+    border-bottom: 2px solid #C6E0FF;
 }
 #filter-engine{
     width: 80%;
     margin-left: 10%;
-    margin-top: -3%;
+    margin-top: -2%;
     background-color: var(--white);
+    box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
 }
-.filter-btns-container{
+.filter-div{
     display: flex;
-    flex-wrap: wrap;
-    /* gap: 1.5rem; */
-    height: 3rem;
+    height: 4rem;
     align-items: center;
-    justify-content: space-between;
 }
 .subtitle{
     width: 20%;
     text-align: center;
+    font-size: 12px;
+}
+.filter-btns-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
 }
 .filter-btn{
     display: flex;
     align-items: center;
-    width: 10%;
-    height: 1.5rem;
-    border-radius: 8px;
+    justify-content: space-between;
+    width: 13%;
+    height: 35%;
+    border-radius: 4px;
     font-family: inherit;
+    font-weight: bold;
     background-color: var(--light-grayish-bg);
     color: var(--green-primary);
-    padding-left: 0.5rem;
-    text-align: right;
     border: none;
 }
+.filter-label{
+    margin-left: 0.2rem;
+}
 .icon-remove{
-    margin-left: 1rem;
-    height: 95%;
+    width: 20%;
+    height: 100%;
     border-radius: 0% 10% 10% 0%;
     padding: 0.4rem;
     border: none;
-    background-color: var(--dark-grayish-cyan);
+    background-color: var(--very-dark-grayish);
 }
-.main-container{
+#main-container{
     width: 80%;
     margin-left: 10%;
-    margin-top: 2rem;
-    background-color: blueviolet;
+    margin-top: 2rem;;
+}
+.job-card{
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.job-card img{
+    width: 10%;
+    height: 100%;
+}
+.company-information{
+    width: 40%;
+    margin-left: 2%;
+}
+.company-name{
+    width: 100%;
+    margin-bottom: 3%;
+    color: var(--green-primary)
+}
+.job-position{
+    width: 100%;
+    margin-bottom: 3%;
+}
+.job-features span{
+    color: var(--very-dark-grayish);
+}
+.job-skills{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    gap: 1rem;   
+    width: 40%;
+}
+.job-skills span{
+    background-color: var(--light-grayish-bg);
+    color: var(--green-primary);
+    padding: 0.5rem;
+    font-weight: bold;
 }

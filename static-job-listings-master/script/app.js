@@ -1,5 +1,3 @@
-
-
 const dataJobs = [
     {
       "id": 1,
@@ -154,9 +152,42 @@ const dataJobs = [
 ]
 
 const filterEngine = document.getElementById("filter-engine");
+const jobsCards = document.getElementById('main-container');
+let cards = '';
 // Create filter buttons dinamically
-
 createFilterEngine();
+createJobsCards(dataJobs);
+// Create dinamically the jobs cards
+function createJobsCards(jobItems){
+   cards = jobItems.map(function(job){
+    return `<article class="job-card">
+    <img src="${job.logo}">
+    <div class="company-information">
+      <h5 class="company-name">${job.company}</h5>
+      <h4 class="job-position">${job.position}</h4>
+      <div class="job-features">
+        <span>${job.postedAt} -</span>
+        <span>${job.location} -</span>
+        <span>${job.contract}</span>
+      </div>
+    </div>
+    <div class="job-skills">
+      ${getTagsJob(job)}
+    </div>
+  </article>`
+  }).join("");
+  jobsCards.innerHTML = cards;
+}
+
+function getTagsJob(job){
+  let tags = [job.role, job.level, ...job.languages, ...job.tools];
+  let tagsHTML = '';
+  for(let i = 0; i < tags.length; i++){
+    tagsHTML += `<span>${tags[i]}</span>`;
+  } 
+  return tagsHTML;
+}
+
 function createFilterEngine(){
   createRolesBtns();
   createLevelsBtns();
@@ -168,112 +199,148 @@ function createFilterEngine(){
 
 function createRolesBtns(){
   const roles = getRoles();
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY ROLES: </h3>`;
+  subtitle .innerHTML = `<h4>ROLES:</h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByRole = roles.map(function(role){
-    return `<button class="filter-btn type="button" data-id="role">
+    return `<button class="filter-btn role" type="button" data-id="role">
               <span class="filter-label">${role}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByRole;
-  filterEngine.append(btnContainer);
+  btnContainer.innerHTML = btnsByRole;
+  // Modifying the document 
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
 
 function createLevelsBtns(){
   const levels = getLevels();  
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY LOCATION: </h3>`;
+  subtitle .innerHTML = `<h4>LEVELS:</h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByLevel = levels.map(function(level){
-    return `<button class="filter-btn type="button" data-id="level">
+    return `<button class="filter-btn level" type="button" data-id="level">
               <span class="filter-label">${level}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByLevel;
-  console.log(btnContainer.innerHTML);
-  filterEngine.append(btnContainer);
+  btnContainer.innerHTML = btnsByLevel;
+  // Modifying the document 
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
 
 function createContractBtns(){
   const contracts = getContracts();
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY CONTRACTS'S TYPE: </h3>`;
+  subtitle .innerHTML = `<h4>CONTRACT'S TYPE:</h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByContract = contracts.map(function(contract){
-    return `<button class="filter-btn type="button" data-id="contract">
+    return `<button class="filter-btn" type="button" data-id="contract">
               <span class="filter-label">${contract}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByContract;
-  console.log(btnContainer.innerHTML);
-  filterEngine.append(btnContainer);
+  btnContainer.innerHTML = btnsByContract;
+  // Modifying the document 
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
 
 function createLocationsBtns(){
   const locations = getLocations();
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  //Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY LOCATION: </h3>`;
+  subtitle .innerHTML = `<h4>LOCATIN: </h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByLocation = locations.map(function(loc){
-    return `<button class="filter-btn type="button" data-id="contract">
+    return `<button class="filter-btn" type="button" data-id="contract">
               <span class="filter-label">${loc}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByLocation;
-  console.log(btnContainer.innerHTML);
-  filterEngine.append(btnContainer);
-
+  btnContainer.innerHTML = btnsByLocation;
+  // Modifying the document 
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
 
 function createLanguagesBtns(){
   const languages = getLanguages();
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY LANGUAGES: </h3>`;
+  subtitle .innerHTML = `<h4>LANGUAGES:</h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByLanguage = languages.map(function(lan){
-    return `<button class="filter-btn type="button" data-id="language">
+    return `<button class="filter-btn" type="button" data-id="language">
               <span class="filter-label">${lan}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByLanguage;
-  console.log(btnContainer.innerHTML);
-  filterEngine.append(btnContainer);
+  btnContainer.innerHTML = btnsByLanguage;
+  // Modifying the document 
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
 
 function createToolsBtns(){
   const tools = getTools();
+  // Create filter div
+  let filterDiv = document.createElement('div');
+  filterDiv.className = 'filter-div';
+  // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h3>SEARCH BY TOOLS: </h3>`;
+  subtitle .innerHTML = `<h4>TOOLS:</h4>`;
+  // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
-  btnContainer.append(subtitle);
   let btnsByTools = tools.map(function(tool){
-    return `<button class="filter-btn type="button" data-id="tool">
+    return `<button class="filter-btn" type="button" data-id="tool">
               <span class="filter-label">${tool}</span>
             </button>`
   }).join("");
-  btnContainer.innerHTML += btnsByTools;
-  console.log(btnContainer.innerHTML);
-  filterEngine.append(btnContainer);
-
+  btnContainer.innerHTML = btnsByTools;
+  // Modifying the document
+  filterDiv.append(subtitle);
+  filterDiv.append(btnContainer);
+  filterEngine.append(filterDiv);
 }
+
 function getRoles(){
   return dataJobs.reduce(
     function(values, item){
@@ -356,20 +423,72 @@ function getTools(){
   }, ["All"]);
 }
 
+// Create the buttons for delete the selection
+// const filterBtns = document.querySelectorAll(".filter-btn");
+// filterBtns.forEach((button) => {
+//   button.addEventListener('click', function(){
+//     toggleRemoveButton(button);
+//   })
+// });
 
-const filterBtns = document.querySelectorAll(".filter-btn");
-filterBtns.forEach((button) => {
+
+// FILTER BY ROLE
+const rolesButtons = document.querySelectorAll('.role');
+
+rolesButtons.forEach(function(button){
   button.addEventListener('click', function(){
-    toggleRemoveButton(button);
+    let origin = button.textContent;
+    if(toggleRemoveButton(button)){
+      button.innerHTML = `<span class="filter-label">${origin}</span>`;
+      createJobsCards(dataJobs);
+    } else{
+      button.innerHTML += `<img class="icon-remove" src="./images/icon-remove.svg">`;
+      let filterJob = button.textContent.trim();
+      let newJobList = dataJobs.filter(function(job){
+        if(filterJob === job.role){
+          return job;
+        }
+      });
+      if(filterJob == 'All'){
+        createJobsCards(dataJobs);
+      } else{
+        createJobsCards(newJobList);
+      }
+    }
   })
 });
 
+const levelsButtons = document.querySelectorAll('.level');
+levelsButtons.forEach(function(button){
+  button.addEventListener('click', function(){
+    let origin = button.textContent;
+    if(toggleRemoveButton(button)){
+      button.innerHTML = `<span class="filter-label">${origin}</span>`;
+      createJobsCards(dataJobs);
+    } else{
+      button.innerHTML += `<img class="icon-remove" src="./images/icon-remove.svg">`;
+      let filterJob = button.textContent.trim();
+      let newJobList = dataJobs.filter(function(job){
+        if(filterJob === job.level){
+          return job;
+        }
+      });
+      if(filterJob == 'All'){
+        createJobsCards(dataJobs);
+      } else{
+        createJobsCards(newJobList);
+      }
+    }
+  })
+});
 
 function toggleRemoveButton(button){
   let origin = button.textContent;
   if(button.innerHTML.includes("img")){
-    button.innerHTML = `<span>${origin}</span>`
+    //button.innerHTML = `<span class="filter-label">${origin}</span>`
+    return true;
   } else {
-    button.innerHTML += `<img class="icon-remove" src="./images/icon-remove.svg">`
+    //button.innerHTML += `<img class="icon-remove" src="./images/icon-remove.svg">`
+    return false;
   }
 }

@@ -153,13 +153,9 @@ const dataJobs = [
 
 const filterEngine = document.getElementById("filter-engine");
 const jobsCards = document.getElementById('main-container');
-let cards = '';
-// Create filter buttons dinamically
-createFilterEngine();
-createJobsCards(dataJobs);
-// Create dinamically the jobs cards
-function createJobsCards(jobItems){
-   cards = jobItems.map(function(job){
+
+function getHTML(data){
+  let HTML = data.map(function(job){
     return `<article class="job-card">
     <img src="${job.logo}">
     <div class="company-information">
@@ -176,6 +172,15 @@ function createJobsCards(jobItems){
     </div>
   </article>`
   }).join("");
+
+  return HTML;
+}
+// Create filter buttons dinamically
+createFilterEngine();
+createJobsCards(dataJobs);
+// Create dinamically the jobs cards
+function createJobsCards(jobItems){
+  let cards = getHTML(jobItems);
   jobsCards.innerHTML = cards;
 }
 
@@ -205,7 +210,7 @@ function createRolesBtns(){
   // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>ROLES:</h4>`;
+  subtitle.innerHTML = `<h4>ROLES</h4><img class="icon" src="./images/user.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -229,7 +234,7 @@ function createLevelsBtns(){
   // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>LEVELS:</h4>`;
+  subtitle.innerHTML = `<h4>LEVELS</h4><img class="icon" src="./images/promotions.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -253,7 +258,7 @@ function createContractBtns(){
   // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>CONTRACT'S TYPE:</h4>`;
+  subtitle.innerHTML = `<h4>CONTRACT</h4><img class="icon" src="./images/agreement.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -277,7 +282,7 @@ function createLocationsBtns(){
   //Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>LOCATIN: </h4>`;
+  subtitle.innerHTML = `<h4>LOCATION</h4><img class="icon" src="./images/placeholder.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -301,7 +306,7 @@ function createLanguagesBtns(){
   // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>LANGUAGES:</h4>`;
+  subtitle.innerHTML = `<h4>LANGUAGE</h4><img class="icon" src="./images/coding.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -325,7 +330,7 @@ function createToolsBtns(){
   // Create subtitle div
   let subtitle = document.createElement('div');
   subtitle.className = 'subtitle';
-  subtitle .innerHTML = `<h4>TOOLS:</h4>`;
+  subtitle.innerHTML = `<h4>TOOLS</h4><img class="icon" src="./images/feature.png">`;
   // Create filter buttons div
   let btnContainer = document.createElement('div');
   btnContainer.className = 'filter-btns-container';
@@ -348,7 +353,7 @@ function getRoles(){
         values.push(item.role);
       }
       return values;
-    }, ["All"]
+    }, []
   );
 }
 
@@ -359,7 +364,7 @@ function getLevels(){
         values.push(item.level);
       }
       return values;
-    }, ["All"]
+    }, []
   );
 }
 
@@ -427,7 +432,7 @@ function getTools(){
 // const filterBtns = document.querySelectorAll(".filter-btn");
 // filterBtns.forEach((button) => {
 //   button.addEventListener('click', function(){
-//     toggleRemoveButton(button);
+//     toggleSelectiongButton(button);
 //   })
 // });
 
@@ -438,22 +443,23 @@ const rolesButtons = document.querySelectorAll('.role');
 rolesButtons.forEach(function(button){
   button.addEventListener('click', function(){
     let origin = button.textContent;
-    if(toggleRemoveButton(button)){
+    if(toggleSelectiongButton(button)){
       button.innerHTML = `<span class="filter-label">${origin}</span>`;
-      createJobsCards(dataJobs);
     } else{
       button.innerHTML += `<img class="icon-remove" src="./images/icon-remove.svg">`;
       let filterJob = button.textContent.trim();
-      let newJobList = dataJobs.filter(function(job){
+      cards = dataJobs.filter(function(job){
         if(filterJob === job.role){
           return job;
         }
       });
-      if(filterJob == 'All'){
-        createJobsCards(dataJobs);
-      } else{
-        createJobsCards(newJobList);
-      }
+      // if(filterJob == 'All'){
+      //   createJobsCards(dataJobs);
+      // } else{
+      //   //filterList.innerHTML += newJobList;
+      //   createJobsCards(newJobList);
+      // }
+      createJobsCards(cards);
     }
   })
 });
@@ -462,7 +468,7 @@ const levelsButtons = document.querySelectorAll('.level');
 levelsButtons.forEach(function(button){
   button.addEventListener('click', function(){
     let origin = button.textContent;
-    if(toggleRemoveButton(button)){
+    if(toggleSelectiongButton(button)){
       button.innerHTML = `<span class="filter-label">${origin}</span>`;
       createJobsCards(dataJobs);
     } else{
@@ -473,17 +479,12 @@ levelsButtons.forEach(function(button){
           return job;
         }
       });
-      if(filterJob == 'All'){
-        createJobsCards(dataJobs);
-      } else{
-        createJobsCards(newJobList);
-      }
+      createJobsCards(newJobList);
     }
   })
 });
 
-function toggleRemoveButton(button){
-  let origin = button.textContent;
+function toggleSelectiongButton(button){
   if(button.innerHTML.includes("img")){
     //button.innerHTML = `<span class="filter-label">${origin}</span>`
     return true;

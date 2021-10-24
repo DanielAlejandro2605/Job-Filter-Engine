@@ -151,7 +151,7 @@ const dataJobs = [
     }
 ]
 let dataJobsCopy = [];
-
+let flag;
 const filterEngine = document.getElementById("filter-engine");
 const jobsCards = document.getElementById('main-container');
 const cardsArray = [];
@@ -233,7 +233,7 @@ function filterCards(filters){
     if(iteratingForEachKeyword(filters, card)){
       return card;
     }
-  })
+  });
 }
 
 function iteratingForEachKeyword(filters, card){
@@ -509,7 +509,8 @@ clearButton.addEventListener('click', function(){
     if(filterBtn.innerHTML.includes('img')){
       filterBtn.innerHTML = `<span class="filter-label">${filterBtn.textContent}</span>`
     }
-
     jobsCards.innerHTML = getHTMLFromCards(originalCardsInfo);
   });
+  // hay que arreglar esto
+  filterCards(filterKeyWords);
 })

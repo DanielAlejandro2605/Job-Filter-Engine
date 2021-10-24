@@ -46,7 +46,6 @@ h6{
 #filter-engine{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
     background-color: var(--white);
     box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
 }
@@ -200,11 +199,12 @@ h6{
     margin-left: 25%;
     margin-bottom: 2rem;
 }
-@media (max-width: 1400px) {
+@media (max-width: 1920px) {
     h1{
         font-size: 4rem;
     }
     #filter-engine{
+        width: 80%;
         min-height: 22rem;
         margin-top: -2%;
         margin-left: 10%;
@@ -235,6 +235,12 @@ h6{
         width: 40%;
         margin-left: 2%;
     }
+    .job-position{
+        font-size: 0.9rem;
+    }
+    .job-features span{
+        font-size: 0.6rem;
+    }
     .job-skills{
         align-items: center;
         justify-content: flex-end; 
@@ -245,7 +251,38 @@ h6{
         padding: 0.5rem;
     }
 }
-@media (max-width: 440px) {
+@media (max-width: 1100px){
+    h1{
+        font-size: 2.5rem;
+    }
+    #filter-engine{
+        width: 90%;
+        min-height: 32rem;
+        margin-left: 5%;
+    }
+    .filter-div{
+        width: 30%;
+    }
+    .clear-button{
+        margin-top: 2rem;
+    }
+    #main-container{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .company-information{
+        width: 35%;
+    }
+    .job-skills{
+        width: 55%;
+        /* background-color: darkgray; */
+    }
+    .job-skills span{
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 500px) {
     h1{
         font-size: 2rem;
     }

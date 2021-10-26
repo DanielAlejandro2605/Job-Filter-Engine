@@ -179,6 +179,7 @@ h6{
     margin-bottom: 3%;
 }
 .job-features span{
+    font-weight: bold;
     color: var(--very-dark-grayish);
 }
 .job-skills{

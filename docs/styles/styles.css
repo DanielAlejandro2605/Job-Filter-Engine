@@ -117,7 +117,6 @@ h6{
     transition: 1s ease all;
 }
 .icon-remove{
-    width: 20%;
     height: 100%;
     border-radius: 0% 10% 10% 0%;
     padding: 0.4rem;
@@ -220,6 +219,9 @@ h6{
         margin-left: 15%;
         font-size: 12px;
     }
+    .icon-remove{
+        width: 20%;
+    }
     #main-container{
         width: 80%;
         margin-left: 10%;
@@ -263,6 +265,10 @@ h6{
     .filter-div{
         width: 30%;
     }
+    .icon-remove{
+        width: 17%;
+        padding: 0.3rem;
+    }
     .clear-button{
         margin-top: 2rem;
     }
@@ -275,7 +281,6 @@ h6{
     }
     .job-skills{
         width: 55%;
-        /* background-color: darkgray; */
     }
     .job-skills span{
         padding: 0.2rem;

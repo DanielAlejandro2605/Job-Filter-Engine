@@ -150,8 +150,7 @@ const dataJobs = [
       "tools": ["React", "Sass"]
     }
 ]
-let dataJobsCopy = [];
-let flag;
+
 const filterEngine = document.getElementById("filter-engine");
 const jobsCards = document.getElementById('main-container');
 const cardsArray = [];
@@ -219,6 +218,7 @@ filterBtns.forEach(function(filterBtn){
         filterKeyWords.push(buttonKeyWord);
       }
       filterCards(filterKeyWords);
+      
       if(cardsDisplayed.length == 0){
         jobsCards.innerHTML = `<p class="message-alert">There is not job with these features<p>`;
       } else{
@@ -507,10 +507,9 @@ let clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', function(){
   filterBtns.forEach((filterBtn) => {
     if(filterBtn.innerHTML.includes('img')){
-      filterBtn.innerHTML = `<span class="filter-label">${filterBtn.textContent}</span>`
+      filterBtn.innerHTML = `<span class="filter-label">${filterBtn.textContent.trim()}</span>`
     }
     jobsCards.innerHTML = getHTMLFromCards(originalCardsInfo);
   });
-  // hay que arreglar esto
-  filterCards(filterKeyWords);
+  filterKeyWords = [];
 })
